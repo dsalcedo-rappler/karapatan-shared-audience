@@ -94,6 +94,12 @@ for i in range(len(communities)):
         G.nodes[node]['name'] = node
         G.nodes[node]['comm'] = i
 roots = roots.set_index('index')
+
+for root in roots.index.tolist():
+    try:
+        roots.at[root,'community'] = G.nodes[root]['comm']
+    except:
+        roots.at[root,'community'] = 99
 roots = roots.reset_index()
 
 # Export to csv
