@@ -1,6 +1,12 @@
 import networkx as nx
 import pandas as pd
+import argparse
 from local_utils import download_from_gdrive
+
+# Parse arguments
+parser = argparse.ArgumentParser()
+parser.add_argument("filter_year")
+args = parser.parse_args()
 
 # Import Data
 print("Downloading files...")
@@ -14,7 +20,7 @@ df["created_month"] = df['Post Created Date'].apply(lambda x: str(x)[:7])
 df_full = df.copy()
 
 # Filter data
-filter_year = "2019"
+filter_year = args.filter_year
 df = df_full[ df_full['created_year'] == filter_year ]
 df = df[~df['linker_slug'].isna()]
 
