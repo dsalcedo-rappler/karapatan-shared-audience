@@ -14,7 +14,8 @@ df["created_month"] = df['Post Created Date'].apply(lambda x: str(x)[:7])
 df_full = df.copy()
 
 # Filter data
-df = df_full[ df_full['created_year'] == "2016" ]
+filter_year = "2020"
+df = df_full[ df_full['created_year'] == filter_year ]
 df = df[~df['linker_slug'].isna()]
 
 # Get roots
@@ -96,6 +97,6 @@ roots = roots.set_index('index')
 roots = roots.reset_index()
 
 # Export to csv
-roots.to_csv("shared_sources_roots_2020.csv",index=False)
-links_final.to_csv("shared_sources_2020.csv",index=False)
+roots.to_csv(f"shared_sources_roots_{filter_year}.csv",index=False)
+links_final.to_csv(f"shared_sources_{filter_year}.csv",index=False)
 
