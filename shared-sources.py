@@ -14,7 +14,7 @@ df["created_month"] = df['Post Created Date'].apply(lambda x: str(x)[:7])
 df_full = df.copy()
 
 # Filter data
-filter_year = "2020"
+filter_year = "2019"
 df = df_full[ df_full['created_year'] == filter_year ]
 df = df[~df['linker_slug'].isna()]
 
